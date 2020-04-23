@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<h1 class="text-center">Pet Adoption</h1>
+<div class="row justify-content-center">
+{% for pet in pets%}
+<div class="card mt-5" style="width: 18rem;">
+    <img src="{{pet.img_url()}}" class="card-img-top" alt="{{pet.species}}">
+    <div class="card-body">
+      <h5 class="card-title">{{pet.name}}</h5>
+      <p class="card-text">{{pet.age}} years old</p>
+      {% if pet.available %}
+      <p class="card-text">{{pet.name}} is available!</p>
+      {% endif%}
+      <a href="edit/{{pet.id}}" class="btn btn-primary">Edit pet</a>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+{% endblock %}
